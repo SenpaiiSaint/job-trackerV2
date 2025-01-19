@@ -1,41 +1,66 @@
-import React, {useState} from 'react'
-import JobForm from './components/JobForm';
-import JobList from './components/JobList';
-
+// App.jsx
+import React from 'react'
+import { Routes, Route } from 'react-router-dom'
+import Login from './pages/Login'
+import Register from './pages/Register'
+import Dashboard from './pages/Dashboard'
+import Settings from './pages/Settings'
+import Stats from './pages/Stats'
+import AdminPanel from './pages/AdminPanel' // hypothetical admin page
+import PrivateRoute from './components/PrivateRoute'
+import AdminRoute from './components/AdminRoute'
+import Sidebar from './components/Sidebar'
 
 function App() {
-  const [jobs, setJobs] = useState([])
-
-  // Add a new Job
-  const handleAddJob = (newJob) => {
-    setJobs((prevJobs) => [...prevJobs, newJob])
-  }
-
-  // Update the status of a job
-  const handleStatusChange = (id, newStatus) => {
-    setJobs((prevJobs) =>
-    prevJobs.map((job) =>
-    job.id === id ? { ...job, status: newStatus } : job
-      ) 
-    )
-  }
-
-  //Remove a job from the list
-  const handleRemoveJob = (id) => {
-    setJobs((prevJobs) => prevJobs.filter((job) => job.id !== id ))
-  }
-
   return (
-    <div className='app-container'>
-      <h1>Simple Job Tracker</h1>
-      <JobForm onAddJob={handleAddJob} />
-      <JobList
-      jobs={jobs}
-      onStatusChange={handleStatusChange}
-      onRemoveJob={handleRemoveJob}
-      />
+    <div className="app-layout">
+      <Sidebar />
+      <main className="main-content">
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+
+          {/* Protected (any user with token) */}
+          <Route
+            path="/dashboard"
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/stats"
+            element={
+              <PrivateRoute>
+                <Stats />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/settings"
+            element={
+              <PrivateRoute>
+                <Settings />
+              </PrivateRoute>
+            }
+          />
+
+          {/* Admin-only route */}
+          <Route
+            path="/admin"
+            element={
+              <AdminRoute>
+                <AdminPanel />
+              </AdminRoute>
+            }
+          />
+
+          <Route path="*" element={<Login />} />
+        </Routes>
+      </main>
     </div>
   )
 }
 
-export default App;
+export default App

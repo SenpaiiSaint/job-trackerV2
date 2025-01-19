@@ -1,0 +1,100 @@
+/* src/pages/Dashboard.css */
+
+/* Page container */
+.dashboard {
+  max-width: 1000px; /* or whatever suits your layout */
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  font-family: sans-serif;
+}
+
+/* Hero / Header area */
+.dashboard__header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.dashboard__title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.dashboard__subtitle {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Main content area */
+.dashboard__content {
+  background-color: #f9f9f9;
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+/* Search / Filter bar */
+.dashboard__search {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+.dashboard__search input {
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 250px;
+}
+
+/* Layout for form and list - you can refine further if needed */
+.dashboard__form {
+  margin-bottom: 2rem;
+}
+
+/* If you want the JobList items to be displayed as 'cards', 
+   override the styling in JobItem.css or create a global style. 
+   Here's an example if you want a grid layout: */
+.dashboard__list {
+  display: grid;
+  grid-template-columns: 1fr; /* single column on small screens */
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .dashboard__list {
+    grid-template-columns: 1fr 1fr; /* two columns on mid-sized screens */
+  }
+}
+
+/* Example "card" style that you can apply to JobItem,
+   or override in your JobItem.css: */
+.job-item {
+  background-color: #fff;     /* White background for card */
+  border: 1px solid #ccc;
+  padding: 1rem;
+  border-radius: 6px;
+  transition: box-shadow 0.2s ease;
+}
+
+.job-item:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.job-item__position {
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+  color: #333;
+}
+
+.job-item__company {
+  color: #666;
+  margin-bottom: 0.75rem;
+}
+
+.job-item__controls {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}

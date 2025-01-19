@@ -1,0 +1,172 @@
+/* src/components/Sidebar.css */
+
+/* Base sidebar styles */
+.sidebar {
+  width: 220px;              /* Expanded width */
+  min-height: 100vh;
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  transition: width 0.3s ease;
+  overflow: hidden; /* Hide overflow during transition */
+}
+
+/* Collapsed: icons remain visible, text hidden in JSX */
+.sidebar.collapsed {
+  width: 80px; /* Adjust as needed to avoid clipping icons */
+}
+
+/* Header (toggle button + optional title) */
+.sidebar__header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.sidebar__toggle-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.25rem;
+  margin-right: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.sidebar__toggle-btn:hover {
+  transform: scale(1.1);
+}
+
+.sidebar__title {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+/* Profile Section */
+.sidebar__profile {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #444; /* optional divider line */
+  transition: justify-content 0.3s ease; /* animate position change */
+}
+
+/* In collapsed mode, center the icon horizontally */
+.sidebar.collapsed .sidebar__profile {
+  justify-content: center;
+}
+
+.sidebar__profile-icon {
+  color: #fff;
+  font-size: 1.75rem;
+  margin-right: 0.5rem;
+  transition: margin-right 0.3s ease;
+}
+
+/* Remove margin-right to perfectly center the icon in collapsed mode */
+.sidebar.collapsed .sidebar__profile-icon {
+  margin-right: 0;
+}
+
+.sidebar__profile-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar__profile-name {
+  font-weight: bold;
+}
+
+.sidebar__profile-email {
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+/* Navigation */
+.sidebar__nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Each nav item */
+.sidebar__nav li {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+/* Hover effect for nav items */
+.sidebar__nav li:hover {
+  background-color: #444;
+}
+
+/* Icon styling for nav items */
+.sidebar__icon {
+  color: #fff;
+  font-size: 1.25rem;
+  margin-right: 0.5rem;
+  transition: transform 0.2s ease;
+}
+
+/* On hover, scale the icon */
+.sidebar__nav li:hover .sidebar__icon {
+  transform: scale(1.15);
+}
+
+/* When collapsed, center nav icons as well */
+.sidebar.collapsed .sidebar__nav li {
+  justify-content: center;
+}
+
+/* Remove right margin on icons when collapsed */
+.sidebar.collapsed .sidebar__icon {
+  margin-right: 0;
+}
+
+/* Text is conditionally rendered in JSX (only if not collapsed) */
+.sidebar__text {
+  transition: opacity 0.3s ease;
+}
+
+/* ---------------------------------------------------------------- */
+/* Link styling: no underline, no color change */
+/* ---------------------------------------------------------------- */
+.sidebar__link {
+  /* Match the .sidebar text color and remove underlines */
+  color: inherit;
+  text-decoration: none;
+
+  /* Ensure the link covers the same area as the li */
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.5rem; 
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+/* Keep the same color on hover, focus, active; remove underline */
+.sidebar__link:hover,
+.sidebar__link:focus,
+.sidebar__link:active {
+  text-decoration: none;
+  color: inherit; /* Do not change text color on hover/click */
+}
+
+/* If you still want a hover background, you can apply it here instead 
+   of .sidebar__nav li:hover, but typically you'll keep li:hover for 
+   simplicity. If you do it here, remove/merge the li:hover rule above. */
+/*
+.sidebar__link:hover {
+  background-color: #444;
+}
+*/

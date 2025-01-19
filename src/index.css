@@ -1,6 +1,5 @@
 /* src/index.css */
 
-/* Global resets or base styles */
 * {
   margin: 0;
   padding: 0;
@@ -12,15 +11,12 @@ body {
   background-color: #f9f9f9;
 }
 
-/* Container-like styling that might apply to the whole app */
-.app-container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 1rem;
+.app-layout {
+  display: flex;
+  min-height: 100vh; /* full viewport height */
 }
 
-/* Global headings, etc. */
-h1 {
-  text-align: center;
-  margin-bottom: 2rem;
+.main-content {
+  flex: 1; /* fill remaining space to the right of sidebar */
+  padding: 1rem;
 }

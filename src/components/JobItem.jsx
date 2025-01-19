@@ -1,3 +1,4 @@
+// src/components/JobItem.jsx
 import React from 'react'
 import './JobItem.css'
 
@@ -19,19 +20,13 @@ function JobItem({ job, onStatusChange, onRemoveJob }) {
         <p className="job-item__company">{company}</p>
       </div>
       <div className="job-item__controls">
-        <select
-          className="job-item__select"
-          value={status}
-          onChange={handleStatusChange}
-        >
+        <select value={status} onChange={handleStatusChange}>
           <option value="Applied">Applied</option>
           <option value="Interviewing">Interviewing</option>
           <option value="Offered">Offered</option>
           <option value="Rejected">Rejected</option>
         </select>
-        <button className="job-item__remove" onClick={handleRemove}>
-          Remove
-        </button>
+        <button onClick={handleRemove} className="job-item__remove">Remove</button>
       </div>
     </div>
   )
