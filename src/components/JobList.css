@@ -1,0 +1,10 @@
+.job-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.job-list__empty {
+  text-align: center;
+  color: #666;
+}

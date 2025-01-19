@@ -1,0 +1,22 @@
+.job-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.job-form__input {
+  flex: 1;
+  padding: 5px;
+  font-size: 1rem;
+}
+
+.job-form__select {
+  padding: 5px;
+  font-size: 1rem;
+}
+
+.job-form__button {
+  padding: 5px 10px;
+  font-size: 1rem;
+  cursor: pointer;
+}
